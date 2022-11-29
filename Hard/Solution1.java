@@ -1,9 +1,16 @@
+import java.util.Arrays;
+
 class Solution1 {
     public int[] canSeePersonsCount(int[] heights) {
         int arr[] = new int[heights.length];
         int count = 0;
         int max = 0;
+        int index = 0;
         for (int i = 0; i < arr.length; i++) {
+            System.out.println(max);
+            System.out.println(index);
+            // index = Arrays.binarySearch(heights, max);
+            index = Arrays.asList(heights).indexOf(max) + 2;
             count = 0;
             if (i == heights.length - 1) {
                 arr[heights.length-1] = 0;
@@ -11,24 +18,34 @@ class Solution1 {
             }
             for (int j = i+1; j < arr.length; j++) {
                 System.out.println("count = "+count);
+                // if(j == 1){
+                //     count ++;
+                //     continue;
+                // }
                 if (heights[i] > heights[j]) {
                     System.out.println("i = "+i+" j = "+j+" Inside the if");
                     if(j == 1){
                         count ++;
                         continue;
                     }
+                    // if(i == index){
+                    //     break;
+                    // }
                     // else if(j == max){
                     //     System.out.println("Inside - maxxxxxxxxxxxxxxxxxxxxxx");
                     //     count ++;
                     //     break;
                     // }
-                    else if(heights[j] < heights[i] && i == j -1){
+                    else if(heights[j] < heights[i] && i == j - 1){
                         System.out.println("Inside new else if!");
                         count ++;
                     }
-                    // else if(i >= 1 && i <= max x&& j > max){
+                    // else if(i >= 1 && i <= index){
                     //     // continue;
                     //     break;
+                    // }
+                    // else if(heights[index] > heights[j] && i >= 1){
+                    //     continue;
                     // }
                     else if(heights[j] > heights[j-1]){
                         System.out.println("Inside desired statement");
@@ -53,12 +70,13 @@ class Solution1 {
                 //     System.out.println("i = "+i+" j = "+j+" Inside the first else if");
                 //     count ++;
                 // }
-                // else if(j > max && i >= 1 && i <= max){
-                //     continue;
-                // }
+                else if(j > index && i > 1 && i <= index){
+                    // continue;
+                    break;
+                }
                 else if (heights[i] < heights[j]) {
                     if(heights[j] > max){
-                        max = j;
+                        max = heights[j];
                     }
                     System.out.println("i = "+i+" j = "+j+" Inside the else if");
                     count ++;
