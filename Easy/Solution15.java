@@ -1,3 +1,5 @@
+// 1662. Check If Two String Arrays are Equivalent
+
 class Solution15 {
     public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
         String w1 = null;
