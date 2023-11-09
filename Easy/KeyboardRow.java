@@ -13,10 +13,10 @@ class KeyboardRow {
         int index = 0;
         for (int i = 0; i < words.length; i++) {
             c = words[i].charAt(0);
-            if(r1.contains(Character.toString(c).toLowerCase())){
+            if(r1.contains(Character.toString(c).toLowerCase()) || r1.contains(Character.toString(c).toUpperCase())){
                 temp = 1;
             }
-            else if(r2.contains(Character.toString(c).toLowerCase())){
+            else if(r2.contains(Character.toString(c).toLowerCase()) || r2.contains(Character.toString(c).toUpperCase())){
                 temp = 2;
             }
             else{
@@ -24,7 +24,7 @@ class KeyboardRow {
             }
             for (int j = 1; j < words[i].length(); j++) {
                 if(temp == 1){
-                    if(r1.contains(Character.toString(words[i].charAt(j)))){
+                    if(r1.contains(Character.toString(words[i].charAt(j)).toLowerCase()) || r1.contains(Character.toString(words[i].charAt(j)).toUpperCase())){
                         count ++;
                     }
                     else{
@@ -32,7 +32,7 @@ class KeyboardRow {
                     }
                 }
                 else if(temp == 2){
-                    if(r2.contains(Character.toString(words[i].charAt(j)))){
+                    if(r2.contains(Character.toString(words[i].charAt(j)).toLowerCase()) || r2.contains(Character.toString(words[i].charAt(j)).toUpperCase())){
                         count ++;
                     }
                     else{
@@ -40,7 +40,7 @@ class KeyboardRow {
                     }
                 }
                 else{
-                    if(r3.contains(Character.toString(words[i].charAt(j)))){
+                    if(r3.contains(Character.toString(words[i].charAt(j)).toLowerCase()) || r3.contains(Character.toString(words[i].charAt(j)).toUpperCase())){
                         count ++;
                     }
                     else{
@@ -54,12 +54,16 @@ class KeyboardRow {
             }
             count = 1;
         }
-        return onerow;
+        ArrayList<String> list = new ArrayList<>(Arrays.asList(onerow));
+        list.removeIf(Objects::isNull);
+        String[] onerowWithoutNulls = list.toArray(new String[0]);
+        return onerowWithoutNulls;
     }
 
     public static void main(String[] args) {
         KeyboardRow obj = new KeyboardRow();
-        String arr[] = { "Hello", "Alaska", "Dad", "Peace" };
+        // String arr[] = { "Hello", "Alaska", "Dad", "Peace" };
+        String arr[] = { "Aasdfghjkl","Qwertyuiop","zZxcvbnm" };
         String[] arr2 = obj.findWords(arr);
         for (int i = 0; i < arr2.length; i++) {
             System.out.print(arr2[i] + " ");
