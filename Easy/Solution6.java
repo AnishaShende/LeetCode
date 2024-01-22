@@ -9,9 +9,10 @@ class Solution6 {
         String num1 = Integer.toBinaryString(n1);
         String num2 = Integer.toBinaryString(n2);
         
-        // //int res = Integer.toBinaryString(num1+num2);
+        //int res = Integer.toBinaryString(num1+num2);
         // int res = Integer.parseInt(num1)+Integer.parseInt(num2);
         // String a = res.toString();
         // return res;
+        return "a";
     }
 }

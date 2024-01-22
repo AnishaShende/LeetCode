@@ -3,3 +3,4 @@ Things to work on:
 1. XOR operation problems
 2. Counting of Unique strings in an array
 3. Removing null elements from an array
+4. Booleans are important too

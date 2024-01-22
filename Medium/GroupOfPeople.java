@@ -1,3 +1,5 @@
+// 1282. Group the people given the group size they belong to
+
 import java.util.ArrayList;
 import java.util.List;
 
